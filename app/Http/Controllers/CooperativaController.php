@@ -42,7 +42,7 @@ class CooperativaController extends Controller
         $newCooperativa = new Cooperativa();
         $newCooperativa->name = $names[rand(0, count($names)-1)];
         //.' '.$lastnames[rand(0, count($lastnames)-1)]
-        $newCooperativa->avatar = rand(1,29).'.png';
+        $newCooperativa->avatar = rand(1,4).'.png';
         $newCooperativa->stars = rand(2, 4).'.'.rand(0,9);
         $newCooperativa->latitude = '-23.6'.rand(0,9).'491';
         $newCooperativa->longitude = '-46.8'.rand(0,9).'526';
