@@ -36,8 +36,8 @@ class CreateAllTables extends Migration
             $table->string('name');
             $table->string('avatar')->default('default.png');
             $table->float('stars')->default(0);
-            $table->int('latitude')->nullable();
-            $table->int('longitude')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
         });
         Schema::create('cooperativaphotos', function (Blueprint $table) {
             $table->id();
