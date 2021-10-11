@@ -141,13 +141,9 @@ class CooperativaController extends Controller
             $city = 'Embu das Artes';
         }
 
-        $cooperativas = Cooperativa::select(Cooperativa::raw('*, SQRT(
-            POW(69.1 * (latitude - '.$lat.'), 2) +
-            POW(69.1 * ('.$lng.' - longitude) * COS(latitude / 57.3), 2)) AS distance'))
-            ->havingRaw('distance < ?', [10])
-            ->orderBy('distance', 'ASC')
-            ->offset($offset)
-            ->limit(5)
+        $cooperativas = Cooperativa::select(Cooperativa::raw(SQL: select *, SQRT(
+            POW(69.1 * (latitude - -23.6491), 2) +
+            POW(69.1 * (-46.8526 - longitude) * COS(latitude / 57.3), 2)) AS distance from &quot;cooperativas&quot; having distance &lt; 10 order by &quot;distance&quot; asc limit 5 offset 0)
             ->get();
 
         foreach($cooperativas as $bkey =>$bvalue) {
