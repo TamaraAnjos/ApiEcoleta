@@ -9,5 +9,4 @@ class Cooperativa extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    public $keyType = 'string';
 }
