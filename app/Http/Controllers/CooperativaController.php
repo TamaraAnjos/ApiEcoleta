@@ -143,7 +143,7 @@ class CooperativaController extends Controller
 
         $cooperativas = Cooperativa::select(Cooperativa::raw('select *, SQRT(
             POW(69.1 * (latitude - -23.6491), 2) +
-            POW(69.1 * (-46.8526 - longitude) * COS(latitude / 57.3), 2)) AS distance from &quot cooperativas&quot having distance &lt 10 order by &quot distance&quot asc limit 5 offset 0))'
+            POW(69.1 * (-46.8526 - longitude) * COS(latitude / 57.3), 2)) AS distance from $quot cooperativas&quot having distance $lt 10 order by $quot distance$quot asc limit 5 offset 0))'
             ->get();
 
         foreach($cooperativas as $bkey =>$bvalue) {
