@@ -143,9 +143,6 @@ class CooperativaController extends Controller
 
         $cooperativas = Cooperativa::select(Cooperativa::raw('*, SQRT(
             POW(69.1 * (-23.6491) * COS( 57.3), 2)) AS distance'))
-            ->havingRaw('distance < ?', [10])
-            ->orderBy('distance', 'ASC')
-            ->offset($offset)
             ->limit(5)
             ->get();
 
