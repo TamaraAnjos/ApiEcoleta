@@ -142,13 +142,7 @@ class CooperativaController extends Controller
         }
 
         $cooperativas = Cooperativa::select(Cooperativa::raw('*, SQRT(
-            POW(69.1 * (-46.8526), 2) +
-            POW(69.1 * (-23.6491) * COS( 57.3), 2)) AS distance'))
-            ->havingRaw('distance < ?', [10])
-            ->orderBy('distance', 'ASC')
-            ->offset($offset)
-            ->limit(5)
-            ->get();
+            POW(69.1 * (-23.6491) * COS( 57.3), 2)) AS distance from &quot;cooperativas&quot; having distance &lt; 10 order by &quot;distance&quot; asc limit 5 offset 0))
 
         foreach($cooperativas as $bkey =>$bvalue) {
             $cooperativas[$bkey]['avatar'] = url('media/avatars/'.$cooperativas[$bkey]['avatar']);
