@@ -117,7 +117,10 @@ class CooperativaController extends Controller
         $lat = $request->input('lat');
         $lng = $request->input('lng');
         $city = $request->input('city');
-        
+        $offset = $request->input('offset');
+        if(!$offset){
+            $offset = 0;
+        }
 
         if(!empty($city)){
             $res = $this->searchGeo($city);
