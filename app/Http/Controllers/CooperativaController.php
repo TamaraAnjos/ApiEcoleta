@@ -152,7 +152,8 @@ class CooperativaController extends Controller
             ->havingRaw('distance < ?', [10])
             ->orderBy('distance', 'ASC')
             ->offset($offset)
-            ->limit(5);
+            ->limit(5)
+            ->get();
             
         
         foreach($cooperativas as $bkey =>$bvalue) {
