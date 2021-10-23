@@ -152,9 +152,8 @@ class CooperativaController extends Controller
             ->havingRaw('distance < ?', [10])
             ->orderBy('distance', 'ASC')
             ->offset($offset)
-            ->limit(5)
-            ->intval('distance')
-            ->get();
+            ->limit(5);
+            
         
         foreach($cooperativas as $bkey =>$bvalue) {
             $cooperativas[$bkey]['avatar'] = url('media/avatars/'.$cooperativas[$bkey]['avatar']);
