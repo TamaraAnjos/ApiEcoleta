@@ -153,7 +153,7 @@ class CooperativaController extends Controller
             ->orderBy('distance', 'ASC')
             ->offset($offset)
             ->limit(5)
-            ->intval()
+            ->intval('distance')
             ->get();
         
         foreach($cooperativas as $bkey =>$bvalue) {
