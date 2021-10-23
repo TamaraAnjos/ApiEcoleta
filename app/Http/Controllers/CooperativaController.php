@@ -150,7 +150,7 @@ class CooperativaController extends Controller
         $longitude = intval($request->input('-46.83526'));
         $latat = $latitude.'-23.67491';
         $lonat = $longitude.'-46.83526';
-        $cooperativas = Cooperativa::select(Cooperativa::raw('*, '))
+        $cooperativas = Cooperativa::select()
             
             //->orderBy('distance', 'ASC')
             ->offset($offset)
