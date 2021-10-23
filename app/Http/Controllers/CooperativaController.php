@@ -154,7 +154,7 @@ class CooperativaController extends Controller
             POW(69.1 * ('.$latat.' - '.$lat.'), 2) +
             POW(69.1 * ('.$lng.' - '.$lonat.') * COS('.$latat.' / 57.3), 2)) AS distance'))
             
-            ->orderBy('distance', 'ASC')
+            //->orderBy('distance', 'ASC')
             ->offset($offset)
             ->limit(5)
             ->get();
