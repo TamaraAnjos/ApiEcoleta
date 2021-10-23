@@ -153,7 +153,6 @@ class CooperativaController extends Controller
             ->orderBy('distance', 'ASC')
             ->offset($offset)
             ->limit(5)
-            ->intval('latitude')
             ->get();
             
         
