@@ -146,8 +146,8 @@ class CooperativaController extends Controller
             ->limit(5)
             ->get();
 */
-        $latitude = intval($request->input('latitude'));
-        $longitude = intval($request->input('longitude'));
+        $latitude = intval($request->input('-23.67491'));
+        $longitude = intval($request->input('-46.83526'));
         $latat = $latitude.'-23.67491';
         $lonat = $longitude.'-46.83526';
         $cooperativas = Cooperativa::select(Cooperativa::raw('*, SQRT(
