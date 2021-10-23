@@ -137,12 +137,21 @@ class CooperativaController extends Controller
             $lng = '-46.8526';
             $city = 'Embu das Artes';
         }
-
+/*
         $cooperativas = Cooperativa::select(Cooperativa::raw('*, SQRT(
             POW(69.1 * (-23.6491) * COS( 57.3), 2)) AS distance'))
             ->limit(5)
             ->get();
-
+*/
+        $cooperativas = Cooperativa::select(Cooperativa::raw('*, SQRT(
+            POW(69.1 * (latitude - '.$lat.'), 2) +
+            POW(69.1 * ('.$lng.' - longitude) * COS(latitude / 57.3), 2)) AS distance'))
+            ->havingRaw('distance < ?', [10])
+            ->orderBy('distance', 'ASC')
+            ->offset($offset)
+            ->limit(5)
+            ->get();
+        
         foreach($cooperativas as $bkey =>$bvalue) {
             $cooperativas[$bkey]['avatar'] = url('media/avatars/'.$cooperativas[$bkey]['avatar']);
         }
