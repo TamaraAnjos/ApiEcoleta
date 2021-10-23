@@ -24,11 +24,11 @@ class CooperativaController extends Controller
     public function createRandom(){
         $array = ['error' => ''];
         for($q=0;$q<15;$q++) {
-        $names = ['Coopermiti', 'Coopermape', 'Galpão de Eletrônicos', 'Coopernova Cotia','Cooperzagati', 'Coop de Reci Reluz', 'Coop Cooperfenix', 'Coop de Reci Crescer', 'YouGreen', 'Reciclar Coop', 'Coopamare', 'Eco Ponto','STR Reciclagem', 'Coop Cidade Limpa', 'RCR Ambiental', 'Coop Central'];
+        $names = ['Coopermiti', 'Coopermape', 'Galpão de Eletrô', 'Coopernova','Cooperzagati', 'Reci Reluz', 'Cooperfenix', 'Reci Crescer', 'YouGreen', 'Reciclar Coop', 'Coopamare', 'Eco Ponto','STR Reciclagem', 'Cidade Limpa', 'RCR Ambiental', 'Coop Central'];
         //$lastnames = ['Artes', 'São', 'Guaçu', 'Paulo','Eduardo', 'Redondo', 'Verde', 'Tereza', 'Jardim', 'Marcos', 'Urca', 'Limpo', 'Lourenço', 'Serra', 'Branca', 'Dorado'];
 
-        $servicos = ['Descarte de Eletrônicos', 'Descarte de Resíduos Secos', 'Recuperação e Reciclagem', 'Consultoria e Assessoria', 'Educação Ambiental'];
-        $servicos2 = ['Coleta de Vidro', 'Coleta de Papel', 'Coleta de Alumínio', 'Coleta de Lixo Comum', 'Coleta de Plástico', 'Coleta de Pilhas e Baterias', 'Lixo Hospitalares', 'Resíduos Químicos'];
+        //$servicos2 = ['Descarte de Eletrônicos', 'Descarte de Resíduos Secos', 'Recuperação e Reciclagem', 'Consultoria e Assessoria', 'Educação Ambiental'];
+        $servicos = ['Coleta de Vidro', 'Coleta de Papel', 'Coleta de Alumínio', 'Coleta de Lixo Comum', 'Coleta de Plástico', 'Coleta de Pilhas e Baterias', 'Lixo Hospitalares', 'Resíduos Químicos'];
 
         $depos = [
             'Muito bom o serviço de coleta de resíduos químicos.',
@@ -62,7 +62,7 @@ class CooperativaController extends Controller
 
             $newCooperativaService = new CooperativaServices();
             $newCooperativaService->id_cooperativa = $newCooperativa->id;
-            $newCooperativaService->name = $servicos[rand(0, count($servicos)-1)].' de '.$servicos2[rand(0, count($servicos2)-1)];
+            $newCooperativaService->name = $servicos[rand(0, count($servicos)-1)];//.' de '.$servicos2[rand(0, count($servicos2)-1)];
             $newCooperativaService->price = 'Gratuíto';
             $newCooperativaService->save();
         }
