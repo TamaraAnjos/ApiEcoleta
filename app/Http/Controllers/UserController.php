@@ -158,7 +158,8 @@ class UserController extends Controller
 
         $avatar = $request->file('avatar');
 
-        $dest = public_path('/media/avatars');
+        //$dest = public_path('/media/avatars');
+        $dest = public_path('http://appapiecoleta.herokuapp.com/media/avatars');
         $avatarName = md5(time().rand(0,9999)).'.jpg';
 
         $img = Image::make($avatar->getRealPath());
