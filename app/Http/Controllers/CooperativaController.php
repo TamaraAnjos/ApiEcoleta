@@ -111,7 +111,7 @@ class CooperativaController extends Controller
 
         return json_decode($res, true);
     }
-
+/*
     public function list(Request $request) {
         
         $lat = $request->input('lat');
@@ -140,12 +140,12 @@ class CooperativaController extends Controller
             $lng = '-46.8526';
             $city = 'Embu das Artes';
         }
-/*
+
         $cooperativas = Cooperativa::select(Cooperativa::raw('*, SQRT(
             POW(69.1 * (-23.6491) * COS( 57.3), 2)) AS distance'))
             ->limit(5)
             ->get();
-*/
+
         $latitude = intval($request->input('-23.67491'));
         $longitude = intval($request->input('-46.83526'));
         $latat = $latitude.'-23.67491';
@@ -160,6 +160,54 @@ class CooperativaController extends Controller
             ->get();
             
         
+        foreach($cooperativas as $bkey =>$bvalue) {
+            $cooperativas[$bkey]['avatar'] = url('media/avatars/'.$cooperativas[$bkey]['avatar']);
+        }
+
+        $array['data'] = $cooperativas;
+        $array['loc'] = 'Embu das Artes';
+        return $array;
+    }
+    */
+    public function list(Request $request) {
+        $array = ['error' => ''];
+
+        $lat = $request->input('lat');
+        $lng = $request->input('lng');
+        $city = $request->input('city');
+        $offset = $request->input('offset');
+        if(!$offset){
+            $offset = 0;
+        }
+
+        if(!empty($city)){
+            $res = $this->searchGeo($city);
+
+            if(count($res['results']) > 0){
+                $lat = $res['results'][0]['geometry']['location']['lat'];
+                $lng = $res['results'][0]['geometry']['location']['lng'];
+            }
+        }elseif(!empty($lat) && !empty($lng)){
+            $res = $this->searchGeo($lat.','.$lng);
+
+            if(count($res['results']) > 0){
+                $city = $res['results'][0]['formatted_address'];
+            }
+        } else {
+            $lat = '-23.6491';
+            $lng = '-46.8526';
+            $city = 'Embu das Artes';
+        }
+
+        $cooperativas = Cooperativa::select(Cooperativa::raw('*, SQRT(
+            POW(69.1 * (latitude - '.$lat.'), 2) +
+            POW(69.1 * ('.$lng.' - longitude) * COS(latitude / 57.3), 2)) AS distance'))
+            ->havingRaw('distance < ?', [10])
+            ->orderBy('distance', 'ASC')
+            ->offset($offset)
+            ->limit(5)
+            ->get();
+
         foreach($cooperativas as $bkey =>$bvalue) {
             $cooperativas[$bkey]['avatar'] = url('media/avatars/'.$cooperativas[$bkey]['avatar']);
         }
