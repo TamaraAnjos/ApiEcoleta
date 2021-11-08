@@ -12,7 +12,7 @@
         "laravel/framework": "^8.54",
         "laravel/tinker": "^2.5",
         "tymon/jwt-auth": "^1.0",
-        "ext-gd":"*"
+        "ext-gd": " *"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
