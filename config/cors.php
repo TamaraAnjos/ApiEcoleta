@@ -1,5 +1,5 @@
 <?php
-
+header("Access-Control-Allow-Origin: *")
 return [
 
     /*
@@ -31,7 +31,7 @@ return [
 
     'supports_credentials' => false,
     
-    header("Access-Control-Allow-Origin: *");
+    
 
 
 ];
