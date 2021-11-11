@@ -30,7 +30,7 @@ return [
     'max_age' => 0,
 
     'supports_credentials' => false,
-    header('Content-Type: image/jpeg');
+    
     header("Access-Control-Allow-Origin: *");
 
 
