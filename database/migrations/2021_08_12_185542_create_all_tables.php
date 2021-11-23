@@ -53,6 +53,7 @@ class CreateAllTables extends Migration
             $table->id();
             $table->integer('id_cooperativa');
             $table->string('name');
+            $table->string('price');
         });
         Schema::create('cooperativatestimonials', function (Blueprint $table) {
             $table->id();
