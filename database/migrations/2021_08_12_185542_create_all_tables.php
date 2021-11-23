@@ -68,6 +68,17 @@ class CreateAllTables extends Migration
             $table->integer('weekday');
             $table->text('hours');
         });
+        Schema::create('address', function (Blueprint $table) {
+            $table->id();
+            $table->integer('id_user');
+            $table->integer('cep');
+            $table->string('logradouro');
+            $table->integer('numero');
+            $table->string('bairro');
+            $table->string('complemento');
+            $table->integer('localidade');
+            $table->string('uf');
+        });
     }
 
     /**
@@ -86,6 +97,8 @@ class CreateAllTables extends Migration
         Schema::dropIfExists('cooperativaservices');
         Schema::dropIfExists('cooperativatestimonials');
         Schema::dropIfExists('cooperativaavailability');
+        Schema::dropIfExists('address');
+        
         
     }
 }
